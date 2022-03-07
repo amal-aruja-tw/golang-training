@@ -15,10 +15,10 @@ func TestBillFetch(t *testing.T) {
 	t.Run("GiveServerURLWhenFetchIsCalledShouldReturnBill", func(t *testing.T) {
 		url := "https://mocki.io/v1/82f434ce-4124-45a2-901c-374ca88a4429"
 
-		crwler := crawler.NewCrawler(url)
+		client := crawler.NewClient(url)
 
 		userID := 1234
-		bill, err := crwler.FetchBill(userID)
+		bill, err := client.FetchBill(userID)
 
 		assert.Nil(t, err)
 		assert.NotNil(t, bill)
@@ -44,10 +44,10 @@ func TestBillFetch(t *testing.T) {
 
 		defer server.Close()
 
-		crwler := crawler.NewCrawler(server.URL)
+		client := crawler.NewClient(server.URL)
 
 		userID := 1234
-		bill, err := crwler.FetchBill(userID)
+		bill, err := client.FetchBill(userID)
 
 		assert.Nil(t, err)
 		assert.NotNil(t, bill)

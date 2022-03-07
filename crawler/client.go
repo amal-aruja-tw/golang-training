@@ -14,15 +14,15 @@ type Bill struct {
 	Amount int    `json:"amount"`
 }
 
-type Crawler struct {
+type Client struct {
 	url string
 }
 
-func NewCrawler(url string) *Crawler {
-	return &Crawler{url}
+func NewClient(url string) *Client {
+	return &Client{url}
 }
 
-func (c *Crawler) FetchBill(id int) (*Bill, error) {
+func (c *Client) FetchBill(id int) (*Bill, error) {
 	client := http.Client{}
 	res, err := client.Get(c.url)
 
